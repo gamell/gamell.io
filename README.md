@@ -1,5 +1,7 @@
-gamell.io - a template for your online resume / portfolio
-==========================
+gamell.io
+=========
+
+A template for your online resume / portfolio
 
 This work is distributed under the MIT License.
 
