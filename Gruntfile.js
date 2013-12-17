@@ -27,6 +27,9 @@ module.exports = function (grunt) {
     ftpush: {
       build: {
         auth: {
+          // Create a .ftppass file in the root directory of your app with the FTP credentials.
+          // Reference it from authKey and change the host and port here.
+          // more info: https://github.com/inossidabile/grunt-ftpush
           host: 'wtfoto.net',
           port: 21,
           authKey: 'wtfoto'
@@ -220,7 +223,7 @@ module.exports = function (grunt) {
       }
     },
     concat: {
-      dist: {
+      dist: { // custom scripts to concat. I put them here because I don't load them directly in the HTML, but through ajax.
         src: ['<%= yeoman.app %>/tipsy/src/javascripts/jquery.tipsy.js',
               '<%= yeoman.app %>/bower_components/d3/d3.js', 
               '<%= yeoman.app %>/bower_components/queue-async/queue.js', 
@@ -229,7 +232,7 @@ module.exports = function (grunt) {
         dest: '.tmp/concat/js/deferred.js'
       },
     },
-    uglify: {
+    uglify: { // custom scripts to uglify. Same as above.
       dist: {
         options: {
           separator: ';',
