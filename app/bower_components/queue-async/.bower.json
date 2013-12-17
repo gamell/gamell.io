@@ -1,0 +1,16 @@
+{
+  "name": "queue-async",
+  "version": "1.0.4",
+  "main": "./queue.js",
+  "homepage": "https://github.com/mbostock/queue",
+  "_release": "1.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.4",
+    "commit": "8b14ba2e6f53b25130f6ced046e1a5020261622a"
+  },
+  "_source": "git://github.com/mbostock/queue.git",
+  "_target": "~1.0.4",
+  "_originalSource": "queue-async",
+  "_direct": true
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Lettering.js",
+  "homepage": "https://github.com/davatron5000/Lettering.js",
+  "version": "0.6.1",
+  "_release": "0.6.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.6.1",
+    "commit": "e71d7ce963c67f6ce3d7bc4e78d932021e6b1df1"
+  },
+  "_source": "git://github.com/davatron5000/Lettering.js.git",
+  "_target": "~0.6.1",
+  "_originalSource": "Lettering.js",
+  "_direct": true
+}

@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+
+var path = require("path"),
+    fs = require("fs"),
+    optimist = require("optimist"),
+    type = require("../lib/topojson/type"),
+    topojson = require("../");
+
+var argv = optimist
+    .usage("Usage: \033[1mgeojson\033[0m [options] [file …]\n\n"
+
++ "Converts the specified input TopoJSON objects to GeoJSON.")
+
+    .options("o", {
+      alias: "out",
+      describe: "output GeoJSON directory",
+      default: process.cwd(),
+    })
+    .options("precision", {
+      describe: "number of digits after the decimal place to output",
+      default: undefined,
+    })
+    .options("id-property", {
+      describe: "demote geometry id to specified feature property",
+      default: null
+    })
+    .options("help", {
+      describe: "display this helpful message",
+      default: false
+    })
+    .argv;
+
+if (!argv._.length || argv.help) return optimist.showHelp();
+
+var precision = Math.pow(10, argv.precision), round = isNaN(precision)
+    ? function(x) { return x; }
+    : function(x) { return Math.round(x * precision) / precision; };
+
+// Convert TopoJSON back to GeoJSON.
+argv._.forEach(function(file) {
+  var topology = JSON.parse(fs.readFileSync(file, "utf-8"));
+  for (var key in topology.objects) {
+    var object = topojson.object(topology, topology.objects[key]);
+
+    object = type({
+      GeometryCollection: function(collection) {
+        return {
+          type: "FeatureCollection",
+          features: collection.geometries.map(this.geometry, this)
+        };
+      },
+      geometry: function(geometry) {
+        if (geometry.type === "GeometryCollection") return this.GeometryCollection(geometry);
+        geometry.coordinates = geometry.coordinates;
+        if (geometry.type in this) this[geometry.type](geometry);
+        var id = geometry.id, properties = geometry.properties || {};
+        if (argv["id-property"] != null) properties[argv["id-property"]] = id, id = undefined;
+        return {
+          type: "Feature",
+          id: id,
+          properties: properties,
+          geometry: geometry
+        };
+      },
+      point: function(point) {
+        point[0] = round(point[0]);
+        point[1] = round(point[1]);
+      }
+    }).object(object);
+
+    fs.writeFileSync(path.join(argv.o, key + ".json"), JSON.stringify(object), "utf8");
+  }
+});

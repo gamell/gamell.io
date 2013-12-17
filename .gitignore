@@ -1,0 +1,5 @@
+node_modules/
+.ftppass
+.grunt/**
+dist/**
+.tmp/

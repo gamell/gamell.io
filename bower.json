@@ -1,0 +1,19 @@
+{
+  "name": "src",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "~3.0.0",
+    "font-awesome": "~3.2.1",
+    "modernizr": "~2.6.2",
+    "jquery": "~1.9.1",
+    "textillate": "*",
+    "lettering": "~0.6.2",
+    "animate.css": "~2.1.0",
+    "tipsy": "~0.1.7",
+    "d3": "~3.3.11",
+    "queue-async": "~1.0.4",
+    "topojson": "~0.0.32",
+    "jspdf": "*"
+  },
+  "devDependencies": {}
+}

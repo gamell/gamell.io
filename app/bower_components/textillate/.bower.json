@@ -1,0 +1,14 @@
+{
+  "name": "textillate",
+  "homepage": "https://github.com/jschr/textillate",
+  "_release": "e5668c9a76",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e5668c9a76db1b1f9083a8357f1c855c8183b8ab"
+  },
+  "_source": "git://github.com/jschr/textillate.git",
+  "_target": "*",
+  "_originalSource": "textillate",
+  "_direct": true
+}

@@ -1,0 +1,125 @@
+// Formal Resume styles
+@import "vars.less";
+
+#resume-infographic-skills{
+
+	width: 1200px;
+	//height: 700px; // but its autocalculated with javascript
+
+	.skills-wrapper{
+		overflow: auto;
+		margin-top: 10px;
+	}
+
+	.skills-sunburst, .skills-chart {
+		height: auto;
+	}
+
+	.skills-sunburst{
+		width: 600px;
+		margin-left: -40px;	
+		float: left;
+		svg {
+ 			font: 11px @header-font;
+ 			font-weight: 900;
+ 			cursor: pointer;
+		}
+
+	}
+
+	.skills-chart{
+
+		font-family: @header-font;
+		font-size: 15px;
+		float: right;
+		margin: 80px 20px 0 0;
+
+		.breadcumb-text{
+			font-size: 13px;
+		}
+
+		.axis path,
+		.axis line {
+		  fill: none;
+		}
+
+		.x-axis path, .y-axis path{
+			stroke: @greyDark;
+			stroke-width: 1px;
+			shape-rendering: geometricPrecision;
+		}
+
+
+		#skills-chart-line {
+		  fill: none;
+		  stroke-width: 3.5px;
+		}
+	}
+
+}
+
+#resume-infographic-timeline{
+
+	width: 1200px;
+
+	.timeline, .world-map {
+		width: 512px;
+		height: auto;
+	}
+
+	.timeline{
+		float: right;
+	}
+
+	.world-map{
+
+		float: right;
+
+		.land {
+		  fill: #999;
+		  stroke-opacity: 1;
+		}
+
+		.graticule {
+		  fill: none;
+		  stroke: black;
+		  stroke-width:.5;
+		  opacity:.2;
+		}
+
+		.labels {
+		    font-size: 16px;
+		    font-family: sans-serif;
+		    fill: black;
+		    opacity: .9;
+		    //display:none;
+		}
+
+		.noclicks { pointer-events:none; }
+
+		.point {  
+			stroke: black;
+			stroke-width: 3; 
+		}
+
+		.arcs {
+		  opacity:.5;
+		  stroke: gray;
+		  stroke-width: 3;
+		}
+		.flyers {
+		  stroke-width:2.5;
+		  opacity: .95;
+		  stroke: @iosPink; 
+		}
+		.arc, .flyer {
+		  stroke-linejoin: round;
+		  fill:none;
+		}
+
+		  .arc { }
+		  .flyer { }
+		  .flyer:hover { }
+	}
+
+}

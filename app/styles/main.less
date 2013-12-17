@@ -1,0 +1,118 @@
+@import "../bower_components/bootstrap/less/bootstrap.less";
+@icon-font-path: "../fonts/glyphicons/";
+
+@import "../bower_components/font-awesome/less/font-awesome.less";
+@FontAwesomePath: "../fonts/font-awesome";
+
+@import "vars.less";
+@import "bootstrap-mods.less";
+@import "impress-mods.less";
+@import "splash.less";
+@import "resume-infographic.less";
+@import "resume-formal.less";
+@import "bubbles.less";
+
+body{
+	background-color: @white;
+	opacity: 0;
+
+	&.impress-enabled, &.impress-not-supported{
+		opacity: 1;
+
+		.animate{
+			opacity: 1;
+		}
+	}
+
+}
+
+.animate{ // 0 opacity so it doesn't show the text before the animation
+	opacity: 0;
+}
+
+.page-header{
+
+	z-index: 1;
+    border-bottom: 1px solid @greyLight;
+    padding-bottom: 0;
+    
+    h1{
+		font-size: 13em;
+		color: @greyDark;
+	}
+
+}
+
+.light{
+	opacity: 0.4;
+}
+
+h2{
+	.light{
+		margin-left: 20px;
+	}
+}
+
+// resume slides, general header
+
+.resume{
+	.resume-header{
+		
+		margin: 15px 0 15px 0;
+
+		border-bottom: 1px solid @greyLight;
+
+		h2,h3{
+			display: inline-block;
+			margin:0;
+		}
+		h3{
+			font-size: 18px;
+			margin-top: 10px;
+		}
+		h2{
+			margin-bottom: 5px;
+			font-size: 30px;
+		}
+		.left{
+			float: left;
+			width: 30%;
+		}
+		.right{
+			float: right;
+			width: 30%;
+			text-align:right;
+		}
+		.center{
+			width: 39%;
+			text-align: center;
+		}
+	}
+}
+
+// TODO: more styling
+
+.fallback-message{
+	display: none;
+}
+
+.impress-not-supported{
+	.fallback-message{
+		display: block;
+	}
+}
+
+// make it look nice when we don't activate impress
+.impress-not-loaded, .impress-not-supported{
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-sm) { //
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-md) {
+
+}

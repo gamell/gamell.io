@@ -1,0 +1,24 @@
+{
+  "name": "lettering",
+  "version": "0.6.2",
+  "authors": [
+    "Josh Emerson",
+    "Hani Sharabash <hanibash@gmail.com>"
+  ],
+  "description": "Non-Jquery version of lettering.js",
+  "main": "lettering.js",
+  "keywords": [
+    "jquery",
+    "lettering",
+    "typography"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/joshje/Lettering.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
