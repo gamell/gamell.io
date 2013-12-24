@@ -62,14 +62,22 @@
                   <div class="control col-1-2">
                     <label>In Animation</label>
                     <select data-key="effect" data-type="in"></select>
-                    <label class="inline checkbox"><input type="checkbox" data-key="sync" data-type="in" /> Sync</label> 
-                    <label class="inline checkbox"><input type="checkbox" data-key="shuffle" data-type="in" /> Shuffle</label>
+                    <select data-key="type" data-type="in">
+                      <option value="">sequence</option>
+                      <option value="reverse">reverse</option>
+                      <option value="sync">sync</option>
+                      <option value="shuffle">shuffle</option>
+                    </select>
                   </div>
                   <div class="control col-1-2">
                     <label>Out Animation</label>
                     <select data-key="effect" data-type="out"></select>
-                    <label class="inline checkbox"><input type="checkbox" data-key="sync" data-type="out" /> Sync</label>
-                    <label class="inline checkbox"><input type="checkbox" data-key="shuffle" data-type="out" checked="checked" /> Shuffle</label>
+                    <select data-key="type" data-type="out">
+                      <option value="">sequence</option>
+                      <option value="reverse">reverse</option>
+                      <option value="sync">sync</option>
+                      <option selected="selected" value="shuffle">shuffle</option>
+                    </select>
                   </div>
                 </form>
               </div>
@@ -98,9 +106,12 @@
 <script src="jquery.textillate.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
-
   $(function (){
-
+    var log = function (msg) {
+      return function () {
+        if (console) console.log(msg);
+      }
+    }
     $('code').each(function () {
       var $this = $(this);
       $this.text($this.html());
@@ -112,14 +123,29 @@
       , $viewport = $('.playground .viewport');
 
     var getFormData = function () {
-      var data = { loop: true, in: {}, out: {} };
+      var data = { 
+        loop: true, 
+        in: { callback: log('in callback called.') }, 
+        out: { callback: log('out callback called.') }
+      };
       
-      $form.find('[data-key]').each(function () {
+      $form.find('[data-key="effect"]').each(function () {
         var $this = $(this)
           , key = $this.data('key')
           , type = $this.data('type');
 
-          data[type][key] = $this.is(':checkbox') ? $this.is(':checked') : $this.val();
+          data[type][key] = $this.val();
+      });
+
+      $form.find('[data-key="type"]').each(function () {
+        var $this = $(this)
+          , key = $this.data('key')
+          , type = $this.data('type')
+          , val = $this.val();
+
+          data[type].shuffle = (val === 'shuffle');
+          data[type].reverse = (val === 'reverse');
+          data[type].sync = (val === 'sync');
       });
 
       return data;
@@ -159,9 +185,17 @@
       $('h1.glow').removeClass('in');
     }, 2000);
 
+    var $tlt = $viewport.find('.tlt')
+      .on('start.tlt', log('start.tlt triggered.'))
+      .on('inAnimationBegin.tlt', log('inAnimationBegin.tlt triggered.'))
+      .on('inAnimationEnd.tlt', log('inAnimationEnd.tlt triggered.'))
+      .on('outAnimationBegin.tlt', log('outAnimationBegin.tlt triggered.'))
+      .on('outAnimationEnd.tlt', log('outAnimationEnd.tlt triggered.'))
+      .on('end.tlt', log('end.tlt'));
+    
     $form.on('change', function () {
       var obj = getFormData();
-      $viewport.find('.tlt').textillate(obj);
+      $tlt.textillate(obj);
     }).trigger('change');
 
   });

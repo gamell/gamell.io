@@ -1,4 +1,4 @@
-#Textillate.js v0.1
+#Textillate.js v0.3.1
 
 See a live demo [here](http://jschr.github.com/textillate/).
 
@@ -101,7 +101,14 @@ $('.tlt').textillate({
     
     // randomize the character sequence 
     // (note that shuffle doesn't make sense with sync = true)
-    shuffle: false
+    shuffle: false,
+
+    // reverse the character sequence 
+    // (note that reverse doesn't make sense with sync = true)
+    reverse: false,
+
+    // callback that executes once the animation has finished
+    callback: function () {}
   },
   
   // out animation settings.
@@ -111,6 +118,32 @@ $('.tlt').textillate({
     delay: 50,
     sync: false,
     shuffle: false,
-  }
+    reverse: false,
+    callback: function () {}
+  },
+
+  // callback that executes once textillate has finished 
+  callback: function () {}
 });
 ```
+
+##Events
+
+Textillate triggers the following events:
+
+* `start.tlt` - triggered when textillate starts
+* `inAnimationBegin.tlt` - triggered when the in animation begins
+* `inAnimationEnd.tlt` - triggered when the in animation ends
+* `outAnimationBegin.tlt` - triggered when the out animation begins
+* `outAnimationEnd.tlt` - triggered when the in animation ends
+* `end.tlt` - triggered when textillate ends
+
+```js
+$('.tlt').on('inAnimationBegin.tlt', function () {
+  // do something
+});
+```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jschr/textillate/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

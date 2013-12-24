@@ -5,7 +5,7 @@
     .on("mousemove", mousemove)
     .on("mouseup", mouseup);
 
-  var width = 512,
+  var width = 600,
       height = 512;
 
   var proj = d3.geo.orthographic()

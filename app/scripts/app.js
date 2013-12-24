@@ -87,6 +87,7 @@ var gamell = (function($, window){
 
 		var tipsyCommonConfig = {html: true, fade: true};
 		$('#resume-formal h3.skills').tipsy($.extend({},tipsyCommonConfig,{gravity:"e", trigger:"manual"}));
+		$('#resume-formal .resume-header h2 a').tipsy($.extend({},tipsyCommonConfig));
 
 		$('.skills span.web').tipsy($.extend({},tipsyCommonConfig,{gravity:"s"}));
 		$('.skills span.javascript').tipsy($.extend({},tipsyCommonConfig,{gravity:"e"}));

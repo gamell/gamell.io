@@ -64,16 +64,17 @@
       return;
     } 
 
-    if (options.shuffle) shuffle($chars);
+    if (options.shuffle) $chars = shuffle($chars);
+    if (options.reverse) $chars = $chars.toArray().reverse();
 
-    $chars.each(function (i) {
-      var $this = $(this);
+    $.each($chars, function (i, c) {
+      var $char = $(c);
       
       function complete () {
         if (isInEffect(options.effect)) {
-          $this.css('visibility', 'visible');
+          $char.css('visibility', 'visible');
         } else if (isOutEffect(options.effect)) {
-          $this.css('visibility', 'hidden');
+          $char.css('visibility', 'hidden');
         }
         count -= 1;
         if (!count && cb) cb();
@@ -81,10 +82,10 @@
 
       var delay = options.sync ? options.delay : options.delay * i * options.delayScale;
 
-      $this.text() ? 
-        setTimeout(function () { animate($this, options.effect, complete) }, delay) :
+      $char.text() ? 
+        setTimeout(function () { animate($char, options.effect, complete) }, delay) :
         complete();
-    })
+    });
   };
 
   var Textillate = function (element, options) {
@@ -122,56 +123,95 @@
       base.options = options;
     };
 
+    base.triggerEvent = function (name) {
+      var e = $.Event(name + '.tlt');
+      $element.trigger(e, base);
+      return e;
+    };
+
+    base.in = function (index, cb) {
+      index = index || 0;
+       
+      var $elem = base.$texts.find(':nth-child(' + (index + 1) + ')')
+        , options = $.extend({}, base.options, getData($elem))
+        , $chars;
+
+      $elem.addClass('current');
+
+      base.triggerEvent('inAnimationBegin');
+
+      base.$current
+        .text($elem.html())
+        .lettering('words');
+
+      base.$current.find('[class^="word"]')
+          .css({ 
+            'display': 'inline-block',
+            // fix for poor ios performance
+            '-webkit-transform': 'translate3d(0,0,0)',
+               '-moz-transform': 'translate3d(0,0,0)',
+                 '-o-transform': 'translate3d(0,0,0)',
+                    'transform': 'translate3d(0,0,0)'
+          })
+          .each(function () { $(this).lettering() });
+
+      $chars = base.$current
+        .find('[class^="char"]')
+        .css('display', 'inline-block');
+
+      if (isInEffect(options.in.effect)) {
+        $chars.css('visibility', 'hidden');
+      } else if (isOutEffect(options.in.effect)) {
+        $chars.css('visibility', 'visible');
+      }
+
+      base.currentIndex = index;
+
+      animateChars($chars, options.in, function () {
+        base.triggerEvent('inAnimationEnd');
+        if (options.in.callback) options.in.callback();
+        if (cb) cb(base);
+      });
+    };
+
+    base.out = function (cb) {
+      var $elem = base.$texts.find(':nth-child(' + (base.currentIndex + 1) + ')')
+        , $chars = base.$current.find('[class^="char"]')
+        , options = $.extend({}, base.options, getData($elem));
+
+      base.triggerEvent('outAnimationBegin');
+
+      animateChars($chars, options.out, function () {
+        $elem.removeClass('current');
+        base.triggerEvent('outAnimationEnd');
+        if (options.out.callback) options.out.callback();
+        if (cb) cb(base);
+      });
+    };
+
     base.start = function (index) {
-      var $next = base.$texts.find(':nth-child(' + (index || 1) + ')');
+      base.triggerEvent('start');
 
-      (function run ($elem) {
-        var options = $.extend({}, base.options, getData($elem));
+      (function run (index) {
+        base.in(index, function () {
+          var length = base.$texts.children().length;
 
-        base.$current
-          .text($elem.html())
-          .lettering('words');
+          index += 1;
+          
+          if (!base.options.loop && index >= length) {
+            if (base.options.callback) base.options.callback();
+            base.triggerEvent('end');
+          } else {
+            index = index % length;
 
-        base.$current.find('[class^="word"]')
-            .css({ 
-              'display': 'inline-block',
-              // fix for poor ios performance
-              '-webkit-transform': 'translate3d(0,0,0)',
-                 '-moz-transform': 'translate3d(0,0,0)',
-                   '-o-transform': 'translate3d(0,0,0)',
-                      'transform': 'translate3d(0,0,0)'
-            })
-            .each(function () { $(this).lettering() });
-
-        var $chars = base.$current.find('[class^="char"]')
-          .css('display', 'inline-block');
-
-        if (isInEffect(options.in.effect)) {
-          $chars.css('visibility', 'hidden');
-        } else if (isOutEffect(options.in.effect)) {
-          $chars.css('visibility', 'visible');
-        }
-
-        animateChars($chars, options.in, function () {
-          setTimeout(function () {
-            // in case options have changed 
-            var options = $.extend({}, base.options, getData($elem));
-
-            var $next = $elem.next();
-
-            if (base.options.loop && !$next.length) {
-              $next = base.$texts.find(':first-child');
-            } 
-
-            if (!$next.length) return;
-
-            animateChars($chars, options.out, function () {
-              run($next)
-            });
-          }, base.options.minDisplayTime);
+            setTimeout(function () {
+              base.out(function () {
+                run(index)
+              });
+            }, base.options.minDisplayTime);
+          }
         });
-
-      }($next));
+      }(index || 0));
     };
 
     base.init();
@@ -203,18 +243,23 @@
       delayScale: 1.5,
       delay: 50,
       sync: false,
-      shuffle: false
+      reverse: false,
+      shuffle: false,
+      callback: function () {}
     },
     out: {
       effect: 'hinge',
       delayScale: 1.5,
       delay: 50,
       sync: false,
+      reverse: false,
       shuffle: false,
+      callback: function () {}
     },
     autoStart: true,
     inEffects: [],
-    outEffects: [ 'hinge' ]
+    outEffects: [ 'hinge' ],
+    callback: function () {}
   };
 
 }(jQuery));

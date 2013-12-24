@@ -20,7 +20,7 @@
 }
 
 @page  {
-  margin: 0.5cm;
+  margin: 0.6cm;
   border: 0;
 }
 
@@ -34,18 +34,25 @@ body {
   border: 0;
 }
 
+.tipsy.tipsy-n {
+  display: none !important;
+}
+
 #resume-formal {
   position: absolute;
   height: auto;
   padding: 0;
-  margin: -66px 0 0 0;
+  margin: -100px 0 0 0;
   border: 0;
   -webkit-transform: none;
+          transform: none;
   -webkit-transform-style: none;
+          transform-style: none;
 }
 
 #resume-formal .resume-header {
   display: none;
+  height: 0;
 }
 
 #resume-formal p.print {
@@ -55,6 +62,10 @@ body {
 
 #resume-formal p.print img {
   float: left;
+}
+
+#resume-formal .skill-tooltip {
+  display: none;
 }
 
 #resume-formal .page {

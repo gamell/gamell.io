@@ -1,7 +1,7 @@
 @import "vars.less";
 
 @page {
-	margin: 0.5cm;
+	margin: 0.6cm;
 	border: 0;
 }
 
@@ -15,17 +15,24 @@ body{
 	border: 0;
 }
 
+.tipsy.tipsy-n{
+	display:none !important;
+}
+
 #resume-formal{
 
 	position: absolute; 
 	-webkit-transform: none;
+	transform: none;
 	-webkit-transform-style: none; 
+	transform-style: none;
 	height: auto;
-	margin: -66px 0 0 0;
+	margin: -100px 0 0 0;
 	padding: 0;
 
 	.resume-header{
 		display: none;
+		height: 0;
 	}
 
 	p.print{
@@ -35,6 +42,10 @@ body{
 		img{
 			float: left;
 		}
+	}
+
+	.skill-tooltip{
+		display: none;
 	}
 
 	.page{
