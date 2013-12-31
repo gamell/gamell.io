@@ -40,7 +40,7 @@ Libraries used
 --------------
 
 - <a href="http://jschr.github.io/textillate/">textillate</a> (<a href="https://daneden.me/animate/">animate.css</a>, <a href="http://letteringjs.com/">letteringjs</a>): the homepage animation.
-- ,a href="http://bartaz.github.io/impress.js">impressjs</a>: for the 3d effects and transitions.
+- <a href="http://bartaz.github.io/impress.js">impressjs</a>: for the 3d effects and transitions.
 - <a href="http://d3js.org/">d3</a> (<a href="https://github.com/mbostock/topojson">topojson</a>, <a href="https://npmjs.org/package/queue-async">queue-async</a>): infographics and maps.
 - <a href="http://getbootstrap.com/">Bootstrap</a>: base CSS.
 - <a href="http://fontawesome.io/">font-awesome</a>: icons.
