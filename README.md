@@ -36,7 +36,21 @@ Which by default will build the minified, uglified, optimized version of the sit
 
 Furthermore, if you want to push directly to your FTP host of choice, you can do so by editing the `Grunt.js` file ( editing the ftpush section) and creating a `.ftpush` file in your root directory. You can find more information here: https://github.com/inossidabile/grunt-ftpush
 
-Libraries used and inspiration
-------------------------------
+Libraries used
+--------------
 
+- <a href="http://jschr.github.io/textillate/">textillate</a> (<a href="https://daneden.me/animate/">animate.css</a>, <a href="http://letteringjs.com/">letteringjs</a>): the homepage animation.
+- ,a href="http://bartaz.github.io/impress.js">impressjs</a>: for the 3d effects and transitions.
+- <a href="http://d3js.org/">d3</a> (<a href="https://github.com/mbostock/topojson">topojson</a>, <a href="https://npmjs.org/package/queue-async">queue-async</a>): infographics and maps.
+- <a href="http://getbootstrap.com/">Bootstrap</a>: base CSS.
+- <a href="http://fontawesome.io/">font-awesome</a>: icons.
+- <a href="https://github.com/jaz303/tipsy">tipsy</a>: tooltips.
+- <a href="http://jquery.com/">jQuery</a>: to glue everything together.
+
+Inspiration
+-----------
+
+- Sunburst infographic: <a href="http://bl.ocks.org/mbostock/4063423">this</a> and <a href="http://bl.ocks.org/kerryrodden/7090426">this</a>
+- <a href="http://bl.ocks.org/dwtkns/4973620">World globe</a>
+- General design and colors: iOS7
 
