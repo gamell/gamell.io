@@ -9599,6 +9599,12 @@ h2 .light {
   display: block;
 }
 
+.github-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
 /* Medium devices (desktops, 992px and up) */
 
 @media (min-width: 768px) {

@@ -228,7 +228,8 @@ module.exports = function (grunt) {
               '<%= yeoman.app %>/bower_components/d3/d3.js', 
               '<%= yeoman.app %>/bower_components/queue-async/queue.js', 
               '<%= yeoman.app %>/bower_components/topojson/topojson.js',
-              '<%= yeoman.app %>/scripts/infographics.js'],
+              '<%= yeoman.app %>/scripts/infographics/sunburst.js',
+              '<%= yeoman.app %>/scripts/infographics/world-map.js'],
         dest: '.tmp/concat/js/deferred.js'
       },
     },

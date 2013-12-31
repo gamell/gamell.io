@@ -14,7 +14,9 @@ var gamell = (function($, window){
 							'bower_components/d3/d3.js', 
 							'bower_components/queue-async/queue.js', 
 							'bower_components/topojson/topojson.js', 
-							'scripts/infographics.js'];
+							'scripts/infographics/sunburst.js',
+							'scripts/infographics/world-map.js',
+							'scripts/infographics/timeline.js'];
 	// endcode
 
 	var refreshBrowserSizes = function(){
