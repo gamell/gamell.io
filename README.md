@@ -1,7 +1,7 @@
 gamell.io
 =========
 
-A template for your online resume / portfolio
+A template for your online resume / portfolio. See it live at <a href="http://gamell.io">gamell.io</a>
 
 This work is distributed under the MIT License.
 
