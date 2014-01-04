@@ -224,7 +224,7 @@ module.exports = function (grunt) {
     },
     concat: {
       dist: { // custom scripts to concat. I put them here because I don't load them directly in the HTML, but through ajax.
-        src: ['<%= yeoman.app %>/tipsy/src/javascripts/jquery.tipsy.js',
+        src: ['<%= yeoman.app %>/scripts/tipsy/src/javascripts/jquery.tipsy.js',
               '<%= yeoman.app %>/bower_components/d3/d3.js', 
               '<%= yeoman.app %>/bower_components/queue-async/queue.js', 
               '<%= yeoman.app %>/bower_components/topojson/topojson.js',
