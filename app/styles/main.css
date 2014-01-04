@@ -9090,11 +9090,11 @@ a:hover {
 #resume-infographic-timeline .world-map {
   width: 100%;
   height: auto;
+  text-align: center;
 }
 
 #resume-infographic-timeline .timeline {
   height: 200px;
-  background-color: black;
 }
 
 #resume-infographic-timeline .world-map .land {

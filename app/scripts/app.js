@@ -3,6 +3,7 @@ var gamell = (function($, window){
 	var module = {};
 
 	var initCompatibility = function(){};
+	var worldMapRotating = false;
 
 	var browserHeight = $(window).height();
 	var browserWidth = $(window).width();
@@ -15,8 +16,8 @@ var gamell = (function($, window){
 							'bower_components/queue-async/queue.js', 
 							'bower_components/topojson/topojson.js', 
 							'scripts/infographics/sunburst.js',
-							'scripts/infographics/world-map.js',
-							'scripts/infographics/timeline.js'];
+							'scripts/infographics/world-map.js'];
+							//'scripts/infographics/timeline.js'];
 	// endcode
 
 	var refreshBrowserSizes = function(){
@@ -28,8 +29,7 @@ var gamell = (function($, window){
 
 		$(".auto-height .viewport").css("height", browserHeight);
 		$(".auto-height").css("height", browserHeight);
-		$(".auto-center").css("margin-top", (browserHeight > 700) ? ((browserHeight-700)/3) : 0 );
-		// if height > 700, 
+		$(".auto-center").css("margin-top", (browserHeight > 700) ? ((browserHeight-700)/3) : 0 ); 
 	};
 
 	var setupAnimate = function(){
@@ -99,9 +99,36 @@ var gamell = (function($, window){
 
 	};
 
+	var initGithubButton = function(){
+		$(".github-button").html('<iframe src="http://ghbtns.com/github-btn.html?user=gamell&repo=gamell.io&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>');
+	};
+
+	var bindWorldMapRotation = function(){
+		// setup the listener to init the world rotation
+		if(window.location.hash === "#/resume-infographic-timeline"){
+			initWorldMapRotation();
+		} else {
+			$(window).on('hashchange',function(){ 
+			    if(window.location.hash === "#/resume-infographic-timeline"){
+			    	initWorldMapRotation();
+			    	$(window).off('hashchange');	
+			    }
+			});
+		}
+	};
+
+	var initWorldMapRotation = function(){
+		if(!!worldMap && !worldMapRotating){
+			worldMap.initRotation();
+			worldMapRotating = true;
+		}
+	};
+
 	var initDeferredScripts = function(){
+		initGithubButton();
 		loadDeferredScripts().done(function(){
 			initTooltip();
+			bindWorldMapRotation();
 		});
 	};
 
@@ -117,7 +144,6 @@ var gamell = (function($, window){
 			$(window).load(function(){
 				initDeferredScripts();
 			});
-
 		});
 
 	};

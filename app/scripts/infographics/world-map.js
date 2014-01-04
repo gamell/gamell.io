@@ -1,22 +1,24 @@
 // World Map
-(function(window, d3, queue, topojson){
+var worldMap = (function(window, d3, queue, topojson){
+
+  var module = {};
 
   d3.select(window)
     .on("mousemove", mousemove)
     .on("mouseup", mouseup);
 
-  var width = 600,
-      height = 512;
+  var width = 1000,
+      height = 700;
 
   var proj = d3.geo.orthographic()
       .translate([width / 2, height / 2])
       .clipAngle(90)
-      .scale(200);
+      .scale(300);
 
   var sky = d3.geo.orthographic()
       .translate([width / 2, height / 2])
       .clipAngle(90)
-      .scale(250);
+      .scale(400);
 
   var path = d3.geo.path().projection(proj).pointRadius(2);
 
@@ -234,5 +236,28 @@
       m0 = null;
     }
   }
+
+  function transition() {
+      d3.transition()
+      .duration(10)
+      .tween("rotate", function() {
+        return function() {
+          var o0 = proj.rotate();
+          var o1 = [o0[0]-0.15, o0[1]];
+          proj.rotate(o1);
+          sky.rotate(o1);
+          position_labels();
+          refresh();
+        };
+      })
+      .transition()
+        .each("end", transition);
+  };
+
+  module.initRotation = function(){
+    transition();
+  };
+
+  return module;
 
 })(window, d3, queue, topojson);

@@ -230,6 +230,7 @@ module.exports = function (grunt) {
               '<%= yeoman.app %>/bower_components/topojson/topojson.js',
               '<%= yeoman.app %>/scripts/infographics/sunburst.js',
               '<%= yeoman.app %>/scripts/infographics/world-map.js'],
+              //'<%= yeoman.app %>/scripts/infographics/timeline.js'],
         dest: '.tmp/concat/js/deferred.js'
       },
     },
