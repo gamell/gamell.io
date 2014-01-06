@@ -9535,6 +9535,10 @@ body.impress-not-supported .animate {
   opacity: 0;
 }
 
+.code {
+  font-family: "Courier New", Courier, serif;
+}
+
 .page-header {
   z-index: 1;
   padding-bottom: 0;
@@ -9589,6 +9593,33 @@ h2 .light {
 .resume .resume-header .center {
   width: 39%;
   text-align: center;
+}
+
+#contact {
+  width: 800px;
+}
+
+#contact .fa {
+  font-size: 40px;
+}
+
+#contact ul {
+  overflow: auto;
+}
+
+#contact ul li {
+  float: left;
+  margin-right: 2%;
+  list-style: none;
+}
+
+#contact h3 {
+  font-size: 22px;
+}
+
+#contact h3 span.fa {
+  margin-right: 10px;
+  font-size: 24px;
 }
 
 .fallback-message {
