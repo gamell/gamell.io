@@ -3,7 +3,7 @@
 
 #resume-formal{
 
-	max-width: 1200px;
+	width: 1024px;
 
 	.print{
 		display: none;
@@ -21,12 +21,16 @@
 		}
 	}
 
+	.page-wrapper{
+		overflow: scroll;
+	}
+
 	.page{
-		margin: -25% 0 150px 5%;
-		border: 1px solid @greyLight;
+		overflow: hidden;
+		margin: 1% 1% 15% 3%;
 		background: #fff;
 		padding: 0 30px 0 30px;
-		width: 90%;
+		width: 95%;
 		box-shadow: 2px 2px 12px @greyDark;
 
 		h2{
@@ -117,6 +121,7 @@
 
 		a{
 			font-family: @header-font;
+			font-weight: bold;
 			padding: 2px 8px;
 			color: white;
 			margin-right: 2px;
@@ -144,9 +149,7 @@
 
 	#resume-formal{
 
-		.page{
-			margin: -20% 0 50px 5%;
-		}
+
 
 	}
 
@@ -156,9 +159,7 @@
 
 	#resume-formal{
 
-		.page{
-			margin: -12% 0 50px 5%;
-		}
+
 
 	}
 
@@ -168,12 +169,6 @@
 
 	#resume-formal{
 
-		overflow-y: scroll;
-		overflow-x: hidden;
-
-		.page{
-			margin: 30px 0 50px 5%;
-		}
-
+		
 	}
 }

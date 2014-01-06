@@ -167,15 +167,15 @@ var worldMap = (function(window, d3, queue, topojson){
   }
 
   function refresh() {
-    svg.selectAll(".land").attr("d", path);
-    svg.selectAll(".point").attr("d", path);
+    svg.selectAll(".world-map .land").attr("d", path);
+    svg.selectAll(".world-map .point").attr("d", path);
     
-    svg.selectAll(".arc").attr("d", path)
+    svg.selectAll(".world-map .arc").attr("d", path)
       .attr("opacity", function(d) {
           return fade_at_edge(d)
       })
 
-    svg.selectAll(".flyer")
+    svg.selectAll(".world-map .flyer")
       .attr("d", function(d) { return swoosh(flying_arc(d)) })
       .attr("opacity", function(d) {
         return fade_at_edge(d)
@@ -238,20 +238,14 @@ var worldMap = (function(window, d3, queue, topojson){
   }
 
   function transition() {
-      d3.transition()
-      .duration(10)
-      .tween("rotate", function() {
-        return function() {
-          var o0 = proj.rotate();
-          var o1 = [o0[0]-0.15, o0[1]];
-          proj.rotate(o1);
-          sky.rotate(o1);
-          position_labels();
-          refresh();
-        };
-      })
-      .transition()
-        .each("end", transition);
+    setInterval(function(){
+      var o0 = proj.rotate();
+      var o1 = [o0[0]-0.3, o0[1]];
+      proj.rotate(o1);
+      sky.rotate(o1);
+      position_labels();
+      refresh();   
+    }, 60);
   };
 
   module.initRotation = function(){

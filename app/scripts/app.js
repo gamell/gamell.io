@@ -27,6 +27,9 @@ var gamell = (function($, window){
 
 		browserHeight -= (browserHeight%2);
 
+		// hack for formal resume page wrapper
+		$(".page-wrapper").css("height", browserHeight - $(".page-wrapper").closest(".resume-header").height());
+
 		$(".auto-height .viewport").css("height", browserHeight);
 		$(".auto-height").css("height", browserHeight);
 		$(".auto-center").css("margin-top", (browserHeight > 700) ? ((browserHeight-700)/3) : 0 ); 
@@ -106,11 +109,11 @@ var gamell = (function($, window){
 
 	var bindWorldMapRotation = function(){
 		// setup the listener to init the world rotation
-		if(window.location.hash === "#/resume-infographic-timeline"){
+		if(window.location.hash === "#/resume-infographic-world-map"){
 			initWorldMapRotation();
 		} else {
 			$(window).on('hashchange',function(){ 
-			    if(window.location.hash === "#/resume-infographic-timeline"){
+			    if(window.location.hash === "#/resume-infographic-world-map"){
 			    	initWorldMapRotation();
 			    	$(window).off('hashchange');	
 			    }

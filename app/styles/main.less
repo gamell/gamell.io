@@ -11,6 +11,7 @@
 @import "resume-infographic.less";
 @import "resume-formal.less";
 @import "bubbles.less";
+@import "contact.less";
 
 body{
 	background-color: @white;
@@ -57,71 +58,45 @@ h2{
 	}
 }
 
-// resume slides, general header
+//general header
 
-.resume{
-	.resume-header{
-		
-		margin: 15px 0 15px 0;
-
-		border-bottom: 1px solid @greyLight;
-
-		h2,h3{
-			display: inline-block;
-			margin:0;
-		}
-		h3{
-			font-size: 18px;
-			margin-top: 10px;
-		}
-		h2{
-			margin-bottom: 5px;
-			font-size: 30px;
-		}
-		.left{
-			float: left;
-			width: 30%;
-		}
-		.right{
-			float: right;
-			width: 30%;
-			text-align:right;
-		}
-		.center{
-			width: 39%;
-			text-align: center;
-		}
-	}
-}
-
-// Contact slide
-
-#contact{
-
-	width: 800px;
+.custom-header{
 	
-	.fa{ // icons size
-		font-size: 40px;
-	}
+	position: relative;
 
-	ul{
-		overflow: auto;
-		li{
-			float: left;
-			list-style: none;
-			margin-right: 2%;
-		}
-	}
+	width: 100%;
 
+	top: 0;
+
+	margin: 15px 0 15px 0;
+
+	border-bottom: 1px solid @greyLight;
+
+	h2,h3{
+		display: inline-block;
+		margin:0;
+	}
 	h3{
-		font-size: 22px;
-		span.fa{
-			font-size: 24px;
-			margin-right: 10px;
-		}
+		font-size: 18px;
+		margin-top: 10px;
 	}
-
-
+	h2{
+		margin-bottom: 5px;
+		font-size: 30px;
+	}
+	.left{
+		float: left;
+		width: 30%;
+	}
+	.right{
+		float: right;
+		width: 30%;
+		text-align:right;
+	}
+	.center{
+		width: 39%;
+		text-align: center;
+	}
 }
 
 // TODO: more styling

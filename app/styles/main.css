@@ -8957,9 +8957,8 @@ a:hover {
   width: 1024px;
 }
 
-#main .frame {
-  width: 980px;
-  margin: 0 auto;
+#home {
+  width: 1100px;
 }
 
 .after-main-header h2 {
@@ -9028,10 +9027,6 @@ a:hover {
   src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(http://themes.googleusercontent.com/static/fonts/droidserif/v3/QQt14e8dY39u-eYBZmppwRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
 }
 
-#resume-infographic-skills {
-  width: 1200px;
-}
-
 #resume-infographic-skills .skills-wrapper {
   margin-top: 10px;
   overflow: auto;
@@ -9082,63 +9077,58 @@ a:hover {
   stroke-width: 3.5px;
 }
 
-#resume-infographic-timeline {
+#resume-infographic-world-map {
   width: 1200px;
 }
 
-#resume-infographic-timeline .timeline,
-#resume-infographic-timeline .world-map {
+#resume-infographic-world-map .world-map {
   width: 100%;
   height: auto;
   text-align: center;
 }
 
-#resume-infographic-timeline .timeline {
-  height: 200px;
-}
-
-#resume-infographic-timeline .world-map .land {
+#resume-infographic-world-map .world-map .land {
   fill: #999;
   stroke-opacity: 1;
 }
 
-#resume-infographic-timeline .world-map .graticule {
+#resume-infographic-world-map .world-map .graticule {
   opacity: .2;
   fill: none;
   stroke: black;
   stroke-width: .5;
 }
 
-#resume-infographic-timeline .world-map .labels {
+#resume-infographic-world-map .world-map .labels {
   font-family: sans-serif;
   font-size: 16px;
   opacity: .9;
   fill: black;
 }
 
-#resume-infographic-timeline .world-map .noclicks {
+#resume-infographic-world-map .world-map .noclicks {
   pointer-events: none;
 }
 
-#resume-infographic-timeline .world-map .point {
+#resume-infographic-world-map .world-map .point {
   stroke: black;
   stroke-width: 3;
 }
 
-#resume-infographic-timeline .world-map .arcs {
+#resume-infographic-world-map .world-map .arcs {
   opacity: .5;
   stroke: gray;
   stroke-width: 3;
 }
 
-#resume-infographic-timeline .world-map .flyers {
+#resume-infographic-world-map .world-map .flyers {
   opacity: .95;
   stroke-width: 2.5;
   stroke: #ff2a68;
 }
 
-#resume-infographic-timeline .world-map .arc,
-#resume-infographic-timeline .world-map .flyer {
+#resume-infographic-world-map .world-map .arc,
+#resume-infographic-world-map .world-map .flyer {
   stroke-linejoin: round;
   fill: none;
 }
@@ -9165,7 +9155,7 @@ a:hover {
 }
 
 #resume-formal {
-  max-width: 1200px;
+  width: 1024px;
 }
 
 #resume-formal .print {
@@ -9181,12 +9171,16 @@ a:hover {
   color: #aaaaaa;
 }
 
+#resume-formal .page-wrapper {
+  overflow: scroll;
+}
+
 #resume-formal .page {
-  width: 90%;
+  width: 95%;
   padding: 0 30px 0 30px;
-  margin: -25% 0 150px 5%;
+  margin: 1% 1% 15% 3%;
+  overflow: hidden;
   background: #fff;
-  border: 1px solid #dddddd;
   box-shadow: 2px 2px 12px #444444;
 }
 
@@ -9278,25 +9272,15 @@ a:hover {
 }
 
 @media (min-width: 600px) {
-  #resume-formal .page {
-    margin: -20% 0 50px 5%;
-  }
+  
 }
 
 @media (min-width: 768px) {
-  #resume-formal .page {
-    margin: -12% 0 50px 5%;
-  }
+  
 }
 
 @media (min-width: 992px) {
-  #resume-formal {
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  #resume-formal .page {
-    margin: 30px 0 50px 5%;
-  }
+  
 }
 
 #bubbles {
@@ -9516,6 +9500,61 @@ a:hover {
   }
 }
 
+#contact {
+  width: 1024px;
+}
+
+#contact .fa {
+  font-size: 50px;
+}
+
+#contact ul.social {
+  width: 80%;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: 30px;
+  overflow: auto;
+  text-align: center;
+}
+
+#contact ul.social li {
+  float: left;
+  width: 25%;
+  list-style: none;
+}
+
+#contact h3 {
+  font-size: 22px;
+}
+
+#contact h3 span.fa {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+#contact .section-wrapper {
+  float: left;
+  margin-right: 3%;
+}
+
+#contact .section-wrapper p {
+  margin: 30px 0 0 0;
+}
+
+#contact .section-wrapper.last {
+  margin-right: 0;
+}
+
+#contact .section-wrapper.pgp {
+  padding: 0 3% 0 3%;
+  border-right: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+}
+
+#contact .section-wrapper.pgp p.code {
+  font-size: 10px;
+}
+
 body {
   background-color: #f9f9f9;
   opacity: 0;
@@ -9558,68 +9597,44 @@ h2 .light {
   margin-left: 20px;
 }
 
-.resume .resume-header {
+.custom-header {
+  position: relative;
+  top: 0;
+  width: 100%;
   margin: 15px 0 15px 0;
   border-bottom: 1px solid #dddddd;
 }
 
-.resume .resume-header h2,
-.resume .resume-header h3 {
+.custom-header h2,
+.custom-header h3 {
   display: inline-block;
   margin: 0;
 }
 
-.resume .resume-header h3 {
+.custom-header h3 {
   margin-top: 10px;
   font-size: 18px;
 }
 
-.resume .resume-header h2 {
+.custom-header h2 {
   margin-bottom: 5px;
   font-size: 30px;
 }
 
-.resume .resume-header .left {
+.custom-header .left {
   float: left;
   width: 30%;
 }
 
-.resume .resume-header .right {
+.custom-header .right {
   float: right;
   width: 30%;
   text-align: right;
 }
 
-.resume .resume-header .center {
+.custom-header .center {
   width: 39%;
   text-align: center;
-}
-
-#contact {
-  width: 800px;
-}
-
-#contact .fa {
-  font-size: 40px;
-}
-
-#contact ul {
-  overflow: auto;
-}
-
-#contact ul li {
-  float: left;
-  margin-right: 2%;
-  list-style: none;
-}
-
-#contact h3 {
-  font-size: 22px;
-}
-
-#contact h3 span.fa {
-  margin-right: 10px;
-  font-size: 24px;
 }
 
 .fallback-message {

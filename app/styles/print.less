@@ -10,25 +10,33 @@ html{
 }
 
 body{
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	border: 0;
+	zoom: 1;
+	width: 100%;
 }
 
 .tipsy.tipsy-n{
 	display:none !important;
 }
 
+.github-button{
+	display: none;
+}
+
 #resume-formal{
 
 	position: absolute; 
+	top: 0;
 	-webkit-transform: none;
 	transform: none;
 	-webkit-transform-style: none; 
 	transform-style: none;
 	height: auto;
-	margin: -100px 0 0 0;
+	margin: 0 auto;
 	padding: 0;
+	zoom: 1;
 
 	.resume-header{
 		display: none;
@@ -48,9 +56,23 @@ body{
 		display: none;
 	}
 
+	.page-wrapper{
+		height: 100%;
+		width: 100%;
+		overflow: visible;
+		position: absolute;
+		top: 0;
+	}
+
 	.page{
 
+		width: 90%;
+		height: 100%;
+		overflow: visible;
 		margin: 0 auto;
+		position: absolute;
+		top: -60px;
+		left: 5%;
 
 		a{
 			font-weight: bold;
