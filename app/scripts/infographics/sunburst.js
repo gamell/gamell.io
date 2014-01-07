@@ -6,7 +6,7 @@
     var module = {};
 
     var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 540 - margin.left - margin.right,
+    width = 500 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom,
     STATIC_DATES = [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013];
 
@@ -65,7 +65,7 @@
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis)
         .append("text")
-          .attr("x", 470)
+          .attr("x", 450)
           .attr("y", -8)
           .style("text-anchor", "end")
           .text("Time →");
@@ -108,8 +108,8 @@
 
   // sunburst code
 
-  var w = 620,
-      h = 620,
+  var w = 580,
+      h = 580,
       r = Math.min(w, h) / Math.PI - 25,
       color = categoriesColors,
       //color = d3.scale.category20c(),

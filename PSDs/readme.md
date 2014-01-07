@@ -1,0 +1,1 @@
+Combine multiple PNGs into a single icon using http://convertico.org/Multi_Image_to_one_icon/

@@ -103,6 +103,10 @@ var gamell = (function($, window){
 
 	};
 
+	var initImages = function(){ // function to load the images with the "rel" attribute
+		$("img").attr("src", $(this).attr("rel"));
+	};
+
 	var initGithubButton = function(){
 		$(".github-button").html('<iframe src="http://ghbtns.com/github-btn.html?user=gamell&repo=gamell.io&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>');
 	};

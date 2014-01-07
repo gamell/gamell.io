@@ -8958,7 +8958,7 @@ a:hover {
 }
 
 #home {
-  width: 1100px;
+  width: 1024px;
 }
 
 .after-main-header h2 {
@@ -9039,8 +9039,8 @@ a:hover {
 
 #resume-infographic-skills .skills-sunburst {
   float: left;
-  width: 600px;
-  margin-left: -40px;
+  width: 580px;
+  margin-left: -80px;
 }
 
 #resume-infographic-skills .skills-sunburst svg {
@@ -9075,10 +9075,6 @@ a:hover {
 #resume-infographic-skills .skills-chart #skills-chart-line {
   fill: none;
   stroke-width: 3.5px;
-}
-
-#resume-infographic-world-map {
-  width: 1200px;
 }
 
 #resume-infographic-world-map .world-map {
