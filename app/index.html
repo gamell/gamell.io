@@ -13,10 +13,11 @@
     <!-- Not needed, already in the CSS -->
     <!-- <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'> -->
     <meta name="google-site-verification" content="E9nl9yu-t9nVotAWy6a62owrP6SR2Sbwo7XZBdDE1QE" />
-    <!-- <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <!-- <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <!-- <meta name="viewport" content="width=1024" /> -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/styles.css -->
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
@@ -27,9 +28,7 @@
     <link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
     <!-- endbuild -->
 
-    <!-- build:js scripts/vendor/modernizr.js -->
     <!-- <script src="bower_components/modernizr/modernizr.js"></script> -->
-    <!-- endbuild -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -115,7 +114,7 @@
                   <h3 class="left"><a href="/#resume-infographic-world-map">&larr; World Map</a></h3>
                   <h2 class="center icons">
                     <a title="<span class='skill-tooltip'>Download as PDF</span>" href="/media/resume-joan-gamell.pdf" class="fa fa-download"></a>
-                    <!-- <a title="<span class='skill-tooltip'>Print</span>" href="#" onClick="window.print(); return false;" class="fa fa-print"></a> -->
+                    <a title="<span class='skill-tooltip'>Print</span>" href="#" onClick="window.print(); return false;" class="fa fa-print"></a>
                   </h2>
                   <h3 class="right"><a href="/#my-work">My Work &rarr;</a></h3>
                 </div>
@@ -220,7 +219,7 @@
 
                     <p><a href="http://500px.com/gamell">Photography</a> (<a href="http://wtfoto.net">more</a>), Internet, <a href="http://wtfoto.net/map/">Travelling</a>.</p>
 
-                    <p class="print"><img rel="/images/qr.png" src="" height="100" width="100" alt="qr code" title="qr code" />Please visit my interactive resume and portfolio online at <a href="http://gamell.io">gamell.io</a></p>
+                    <p class="print"><img rel="/qr.png" src="" height="100" width="100" alt="qr code" title="qr code" class="needs-init"/>Please visit my interactive resume and portfolio online at <a href="http://gamell.io">gamell.io</a></p>
                   </div>
               </div>
           </div>
@@ -297,16 +296,6 @@
         </div> <!-- /impress  -->
       </div>
 
-    <!-- Google Analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-45323270-1', 'gamell.io');
-      ga('send', 'pageview');
-    </script>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!-- build:js scripts/app.js -->
@@ -316,9 +305,19 @@
     <script src="scripts/app.js"></script>
     <!-- endbuild -->
 
-    <!-- Github button placeholder -->
+    <!-- Github button placeholder, button directly embedded -->
 
     <div class="github-button"></div>
+
+        <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-45323270-1', 'gamell.io');
+      ga('send', 'pageview');
+    </script>
 
 </body>
 </html>

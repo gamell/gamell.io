@@ -167,10 +167,10 @@ var worldMap = (function(window, d3, queue, topojson){
   }
 
   function refresh() {
-    svg.selectAll(".world-map .land").attr("d", path);
-    svg.selectAll(".world-map .point").attr("d", path);
+    svg.selectAll("#resume-infographic-world-map .land").attr("d", path);
+    svg.selectAll("#resume-infographic-world-map .point").attr("d", path);
     
-    svg.selectAll(".world-map .arc").attr("d", path)
+    svg.selectAll("#resume-infographic-world-map .arc").attr("d", path)
       .attr("opacity", function(d) {
           return fade_at_edge(d)
       })

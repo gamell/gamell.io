@@ -174,7 +174,8 @@ module.exports = function (grunt) {
     recess: {
       dist: {
         options: {
-          compile: true
+          compile: true,
+          compress: true 
         },
         files: {
           '<%= yeoman.app %>/styles/main.css': ['<%= yeoman.app %>/styles/main.less'],
@@ -217,9 +218,9 @@ module.exports = function (grunt) {
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
         dirs: ['<%= yeoman.dist %>'],
-          patterns: {
-            //html: [[/bower_components\/d3\/d3\.js/, 'Replacing reference to deferred.js']]
-          }
+        patterns: {
+          //html: [[/bower_components\/d3\/d3\.js/, 'Replacing reference to deferred.js']]
+        }
       }
     },
     concat: {
@@ -277,15 +278,15 @@ module.exports = function (grunt) {
     htmlmin: {
       dist: {
         options: {
-          /*removeCommentsFromCDATA: true,
+          //removeCommentsFromCDATA: true,
           // https://github.com/yeoman/grunt-usemin/issues/44
           //collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true*/
+          //collapseBooleanAttributes: true,
+          //removeAttributeQuotes: true,
+          //removeRedundantAttributes: true,
+          //useShortDoctype: true,
+          //removeEmptyAttributes: true,
+          //removeOptionalTags: true
         },
         files: [{
           expand: true,

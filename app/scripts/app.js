@@ -22,17 +22,17 @@ var gamell = (function($, window){
 
 	var refreshBrowserSizes = function(){
 
-		browserHeight = $(window).height();
+		browserHeight = $(window).innerHeight();
 		browserWidth = $(window).width();
 
 		browserHeight -= (browserHeight%2);
 
 		// hack for formal resume page wrapper
-		$(".page-wrapper").css("height", browserHeight - $(".page-wrapper").closest(".resume-header").height());
+		//$(".page-wrapper").css("height", browserHeight - $(".page-wrapper").closest(".resume-header").height());
 
-		$(".auto-height .viewport").css("height", browserHeight);
-		$(".auto-height").css("height", browserHeight);
-		$(".auto-center").css("margin-top", (browserHeight > 700) ? ((browserHeight-700)/3) : 0 ); 
+		//$(".auto-height .viewport").css("height", browserHeight);
+		//$(".auto-height").css("height", browserHeight);
+		//$(".auto-center").css("margin-top", (browserHeight > 700) ? ((browserHeight-700)/3) : 0 ); 
 	};
 
 	var setupAnimate = function(){
@@ -104,16 +104,20 @@ var gamell = (function($, window){
 	};
 
 	var initImages = function(){ // function to load the images with the "rel" attribute
-		$("img").attr("src", $(this).attr("rel"));
+		//debugger;
+		$("img.needs-init").each(function(i, elem){
+			$(elem).attr("src", $(elem).attr("rel"));	
+		});
 	};
 
 	var initGithubButton = function(){
-		$(".github-button").html('<iframe src="http://ghbtns.com/github-btn.html?user=gamell&repo=gamell.io&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>');
+		// locally cached to avoid dns lookup and redirections from http://ghbtns.com/github-btn.html?user=gamell&repo=gamell.io&type=fork
+		$(".github-button").html('<iframe src="github-btn.html?user=gamell&repo=gamell.io&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>');
 	};
 
 	var bindWorldMapRotation = function(){
 		// setup the listener to init the world rotation
-		if(window.location.hash === "#/resume-infographic-world-map"){
+		if(window.location.hash === "#/resume-infographic-world-map" || $("body.impress-not-supported").length > 0 ){
 			initWorldMapRotation();
 		} else {
 			$(window).on('hashchange',function(){ 
@@ -136,6 +140,7 @@ var gamell = (function($, window){
 		initGithubButton();
 		loadDeferredScripts().done(function(){
 			initTooltip();
+			initImages();
 			bindWorldMapRotation();
 		});
 	};

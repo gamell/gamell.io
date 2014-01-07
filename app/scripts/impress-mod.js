@@ -168,9 +168,10 @@
     var body = document.body;
     
     var ua = navigator.userAgent.toLowerCase();
-    var isIphoneAndGreaterThanIOS7 = function(ua){
+    var isIphoneAndGreaterThanIOS6 = function(ua){
         return  (ua.search(/(iphone)/) > 0 && 
-                (ua.search(/(os 7_)/) > 0 || 
+                (ua.search(/(os 6_)/) > 0 || 
+                    ua.search(/(os 7_)/) > 0 || 
                     ua.search(/(os 8_)/) > 0 || 
                     ua.search(/(os 9_)/) > 0 || 
                     ua.search(/(os 10_)/) > 0 
@@ -187,8 +188,7 @@
                           // but some mobile devices need to be blacklisted,
                           // because their CSS 3D support or hardware is not
                           // good enough to run impress.js properly, sorry...
-                           ( ua.search(/(ipod)|(android)/) === -1 ) &&
-                           ( isIphoneAndGreaterThanIOS7(ua) || ua.search(/(iphone)/) === -1 );
+                           ( ua.search(/(iphone)|(ipod)|(android)/) === -1 );
     
     if (!impressSupported) {
         // we can't be sure that `classList` is supported
@@ -207,7 +207,7 @@
     
     // some default config values.
     var defaults = {
-        width: 1024,
+        width: 1200,
         height: 768,
         maxScale: 1,
         minScale: 0,
@@ -344,6 +344,7 @@
             // First we set up the viewport for mobile devices.
             // For some reason iPad goes nuts when it is not done properly.
             var meta = $("meta[name='viewport']") || document.createElement("meta");
+            //meta.content = "width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no";
             meta.content = "width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no";
             if (meta.parentNode !== document.head) {
                 meta.name = 'viewport';

@@ -17,6 +17,16 @@ body{
 	width: 100%;
 }
 
+div, body, {	
+	-webkit-transform: none !important;
+	-webkit-transform-origin: none !important;
+	transform: none !important;
+	-webkit-transform-style: none !important; 
+	transform-style: none !important;
+	top: 0 !important;
+	left: 0 !important;
+}
+
 .tipsy.tipsy-n{
 	display:none !important;
 }
@@ -29,16 +39,16 @@ body{
 
 	position: absolute; 
 	top: 0;
+	height: 100%;
 	-webkit-transform: none;
 	transform: none;
 	-webkit-transform-style: none; 
 	transform-style: none;
-	height: auto;
 	margin: 0 auto;
 	padding: 0;
 	zoom: 1;
 
-	.resume-header{
+	.custom-header{
 		display: none;
 		height: 0;
 	}
@@ -71,8 +81,7 @@ body{
 		overflow: visible;
 		margin: 0 auto;
 		position: absolute;
-		top: -60px;
-		left: 5%;
+		top: 0;
 
 		a{
 			font-weight: bold;
