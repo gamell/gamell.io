@@ -102,7 +102,7 @@ var gamell = (function($, window){
 	};
 
 	var initDropboxSaver = function(){	
-		$("head").append('<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="e7nb3h5uznhkmq9"></script>');
+		$("body").append('<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="e7nb3h5uznhkmq9"></script>');
 		$("#resume-formal .dropbox-button").bind("click",function(){
 			try{
 				var options = {
@@ -133,16 +133,16 @@ var gamell = (function($, window){
 
 	var displayFallbackMessage = function(){
 		var $messageContainer = $(".fallback-message p");
-		if($messageContainer.hasClass('mobile')){
+		if(!isImpressSupported() && $("body").hasClass('mobile')){
 			$messageContainer.html(MOBILE_FALLBACK_MESSAGE);
-		} else {
+		} else if(!isImpressSupported()){
 			$messageContainer.html(UNSUPPORTED_BOWSER_FALLBACK_MESSAGE);
 		}
 	};
 
 	var bindWorldMapRotation = function(){
 		// setup the listener to init the world rotation
-		if(window.location.hash === "#/resume-infographic-world-map" || $("body.impress-not-supported").length > 0 ){
+		if(window.location.hash === "#/resume-infographic-world-map" || !isImpressSupported() ){
 			initWorldMapRotation();
 		} else {
 			$(window).on('hashchange',function(){ 
@@ -155,7 +155,7 @@ var gamell = (function($, window){
 
 	var bindInitQr = function(){
 		// setup the listener to init the world rotation
-		if(window.location.hash === "#/resume-formal" || $("body.impress-not-supported").length > 0 ){
+		if(window.location.hash === "#/resume-formal" || !isImpressSupported() ){
 			initQR();
 		} else {
 			$(window).on('hashchange',function(){ 
@@ -166,10 +166,20 @@ var gamell = (function($, window){
 		}
 	};
 
+	var isImpressSupported = function(){
+		return !$("body.impress-not-supported").length > 0;
+	}
+
 	var initWorldMapRotation = function(){
 		if(!!worldMap && !worldMapRotating){
 			worldMap.initRotation();
 			worldMapRotating = true;
+		}
+	};
+
+	var disablePrintingIfNotSupported = function(){
+		if(!isImpressSupported()){
+			$(".fa-print").hide();
 		}
 	};
 
@@ -192,6 +202,8 @@ var gamell = (function($, window){
 		impress().init();
 
 		displayFallbackMessage();
+
+		disablePrintingIfNotSupported();
 
 		$(document).ready(function(){
 
