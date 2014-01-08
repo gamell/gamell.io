@@ -3,3 +3,4 @@ node_modules/
 .grunt/**
 dist/**
 .tmp/
+app/bower_components
