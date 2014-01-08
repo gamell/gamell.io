@@ -23,6 +23,10 @@ Once you have all the above installed, you just have to run:
 
 followed by
 
+	bower update
+
+then just run the app:
+
     grunt server
 
 
