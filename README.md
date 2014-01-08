@@ -32,7 +32,7 @@ Once you are done coding and you are happy with the outcome you can run
 
     grunt build
 
-Which by default will build the minified, uglified, optimized version of the site in the dist/ directory.
+Which by default will build the minified, uglyfied, optimized version of the site in the dist/ directory.
 
 Furthermore, if you want to push directly to your FTP host of choice, you can do so by editing the `Grunt.js` file ( editing the ftpush section) and creating a `.ftpush` file in your root directory. You can find more information here: https://github.com/inossidabile/grunt-ftpush
 
