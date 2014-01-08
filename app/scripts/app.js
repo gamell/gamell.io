@@ -3,11 +3,11 @@ var gamell = (function($, window){
 	var worldMapRotating = false;
 
 	var MOBILE_FALLBACK_MESSAGE = 'You are viewing a limited version of the site, please use a desktop browser to enjoy a much better experience.';
-	var UNSUPPORTED_BOWSER_FALLBACK_MESSAGE = 'You are using an <strong>unsupported</strong> browser. Please <a href="http://browsehappy.com/">use a supported browser</a> - Chrome, Firefox, Safari - to improve your experience.';
+	var UNSUPPORTED_BOWSER_FALLBACK_MESSAGE = 'You are using an <strong>unsupported</strong> browser. Please <a href="http://browsehappy.com/">use a supported browser</a> - Chrome, Firefox or Safari - to improve your experience.';
 
 	var RESUME_URL = "http://gamell.io/media/resume-joan-gamell.pdf"; 
 
-	var SPRITE_URL = "/images/sprite.png";
+	var SPRITE_URL = "/sprite.png";
 
 	var DEFERRED_SCRIPTS = "/scripts/deferred/deferred.js";
 
@@ -147,8 +147,7 @@ var gamell = (function($, window){
 		} else {
 			$(window).on('hashchange',function(){ 
 			    if(window.location.hash === "#/resume-infographic-world-map"){
-			    	initWorldMapRotation();
-			    	$(window).off('hashchange');	
+			    	initWorldMapRotation();	
 			    }
 			});
 		}
@@ -161,8 +160,7 @@ var gamell = (function($, window){
 		} else {
 			$(window).on('hashchange',function(){ 
 			    if(window.location.hash === "#/resume-formal"){
-			    	initQR();
-			    	$(window).off('hashchange');	
+			    	initQR();	
 			    }
 			});
 		}

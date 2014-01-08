@@ -8,11 +8,19 @@
 		list-style: none;
 		margin-top: 100px;
 		overflow: auto;
+		padding: 0;
+		width: 1200px;
 
 		li{
 			float: left;
 			width: 310px;
 			margin-right: 95px;
+
+			// 40 + 95 + 95 + 40 margins
+
+			&.first{
+				margin-left: 40px;
+			}
 
 			&.last{
 				margin-right: 0;
