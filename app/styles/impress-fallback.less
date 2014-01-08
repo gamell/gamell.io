@@ -1,3 +1,5 @@
+@import "vars.less";
+
 body.impress-not-supported{
 	#bubbles, .bubble{
 		display: none;
@@ -7,5 +9,36 @@ body.impress-not-supported{
 		margin: 0 auto;
 		margin-bottom: 200px;
 		padding: 0 20px 0 20px;
-	}	
+	}
+
+	// fallback message
+
+	.fallback-message{
+		position: absolute;
+		top: 0;
+		height: 30px;
+		width: 100%;
+		font-family: @header-font;
+		font-size: 20px;
+		background-color: @iosDarkBlue;
+		color: white;
+
+		p{
+			width: @slideWidth;
+			margin: 0 auto;
+			line-height: 30px;
+			text-align:center;
+		}
+
+		a{
+			color: white;
+			text-decoration: underline;
+		}
+
+	}
+
+	#wrap{
+		margin-top: 80px;
+	}
+
 } 

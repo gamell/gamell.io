@@ -165,34 +165,44 @@
     };
     
     // CHECK SUPPORT
+    
+    navigator.sayswho = ( function ( ) {
+        var ua= navigator.userAgent, tem, 
+        M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*([\d\.]+)/i) || [];
+        if(/trident/i.test(M[1])){
+            tem=  /\brv[ :]+(\d+(\.\d+)?)/g.exec(ua) || [];
+            return 'IE '+(tem[1] || '');
+        }
+        M= M[2]? [M[1], M[2]]:[navigator.appName, navigator.appVersion, '-?'];
+        if((tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+        return M.join(' ');
+    } )( );
+
+    var isIE = function () { 
+        var ua = navigator.sayswho;
+        var UA = ua.split(' ');
+        return (UA[0] == "IE");
+    };
+
     var body = document.body;
     
     var ua = navigator.userAgent.toLowerCase();
-    var isIphoneAndGreaterThanIOS6 = function(ua){
-        return  (ua.search(/(iphone)/) > 0 && 
-                (ua.search(/(os 6_)/) > 0 || 
-                    ua.search(/(os 7_)/) > 0 || 
-                    ua.search(/(os 8_)/) > 0 || 
-                    ua.search(/(os 9_)/) > 0 || 
-                    ua.search(/(os 10_)/) > 0 
-                ));
-    };
-    var impressSupported = 
-                          // browser should support CSS 3D transtorms 
+    var impressBrowserSupported = // browser should support CSS 3D transtorms 
                            ( pfx("perspective") !== null ) &&
                            
                           // and `classList` and `dataset` APIs
                            ( body.classList ) &&
                            ( body.dataset ) &&
-                           
-                          // but some mobile devices need to be blacklisted,
-                          // because their CSS 3D support or hardware is not
-                          // good enough to run impress.js properly, sorry...
-                           ( ua.search(/(iphone)|(ipod)|(android)/) === -1 );
-    
+                           // not support for IE less than 10
+                           !isIE();
+
+    var isMobile = /android|webos|iphone|ipod|blackberry|iemobile|opera mini/i.test(ua);
+    var impressSupported = !isMobile && impressBrowserSupported;
+                          
     if (!impressSupported) {
         // we can't be sure that `classList` is supported
         body.className += " impress-not-supported ";
+        body.className += isMobile ? "mobile" : "browser-not-supported";
     } else {
         body.classList.remove("impress-not-supported");
         body.classList.add("impress-supported");

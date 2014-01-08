@@ -1,12 +1,11 @@
 var gamell = (function($, window){
 
-	var module = {};
-
-	var initCompatibility = function(){};
 	var worldMapRotating = false;
 
-	var browserHeight = $(window).height();
-	var browserWidth = $(window).width();
+	var MOBILE_FALLBACK_MESSAGE = 'You are viewing a limited version of the site, please use a desktop browser to enjoy a much better experience.';
+	var UNSUPPORTED_BOWSER_FALLBACK_MESSAGE = 'You are using an <strong>unsupported</strong> browser. Please <a href="http://browsehappy.com/">use a supported browser</a> - Chrome, Firefox, Safari - to improve your experience.';
+
+	var RESUME_URL = "http://gamell.io/media/resume-joan-gamell.pdf"; 
 
 	var DEFERRED_SCRIPTS = "/scripts/deferred/deferred.js";
 
@@ -19,21 +18,6 @@ var gamell = (function($, window){
 							'scripts/infographics/world-map.js'];
 							//'scripts/infographics/timeline.js'];
 	// endcode
-
-	var refreshBrowserSizes = function(){
-
-		browserHeight = $(window).innerHeight();
-		browserWidth = $(window).width();
-
-		browserHeight -= (browserHeight%2);
-
-		// hack for formal resume page wrapper
-		//$(".page-wrapper").css("height", browserHeight - $(".page-wrapper").closest(".resume-header").height());
-
-		//$(".auto-height .viewport").css("height", browserHeight);
-		//$(".auto-height").css("height", browserHeight);
-		//$(".auto-center").css("margin-top", (browserHeight > 700) ? ((browserHeight-700)/3) : 0 ); 
-	};
 
 	var setupAnimate = function(){
 	$('.animate').textillate({
@@ -91,8 +75,8 @@ var gamell = (function($, window){
 	var initTooltip = function(){
 
 		var tipsyCommonConfig = {html: true, fade: true};
-		$('#resume-formal h3.skills').tipsy($.extend({},tipsyCommonConfig,{gravity:"e", trigger:"manual"}));
-		$('#resume-formal .resume-header h2 a').tipsy($.extend({},tipsyCommonConfig));
+		$("span.dropbox-success").tipsy($.extend({},tipsyCommonConfig,{gravity:"n", trigger:"manual"}));
+		$('#resume-formal .custom-header h2 a').tipsy($.extend({},tipsyCommonConfig));
 		$('#contact ul a').tipsy($.extend({},tipsyCommonConfig));
 
 		$('.skills span.web').tipsy($.extend({},tipsyCommonConfig,{gravity:"s"}));
@@ -113,6 +97,45 @@ var gamell = (function($, window){
 	var initGithubButton = function(){
 		// locally cached to avoid dns lookup and redirections from http://ghbtns.com/github-btn.html?user=gamell&repo=gamell.io&type=fork
 		$(".github-button").html('<iframe src="github-btn.html?user=gamell&repo=gamell.io&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>');
+	};
+
+	var initDropboxSaver = function(){	
+		$("head").append('<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="e7nb3h5uznhkmq9"></script>');
+		$("#resume-formal .dropbox-button").bind("click",function(){
+			try{
+				var options = {
+				    files: [
+				        {
+				            'filename': "Resume Joan Gamell.pdf",
+				            'url': RESUME_URL
+				        }
+				    ],
+				    success: dropboxSaveSuccess,
+				    error: function(err) { alert("There was an error while saving the file to your dropbox: "+err); }
+				};
+
+				Dropbox.save(options);
+			} catch(e){
+				location.href = RESUME_URL;
+			}
+		});
+	};
+
+	var dropboxSaveSuccess = function(){
+		var $dbSuccessTooltip = $("span.dropbox-success")
+		$dbSuccessTooltip.tipsy("show");
+		setTimeout(function(){
+			$dbSuccessTooltip.tipsy("hide");	
+		}, 3000);
+	};
+
+	var displayFallbackMessage = function(){
+		var $messageContainer = $(".fallback-message p");
+		if($messageContainer.hasClass('mobile')){
+			$messageContainer.html(MOBILE_FALLBACK_MESSAGE);
+		} else {
+			$messageContainer.html(UNSUPPORTED_BOWSER_FALLBACK_MESSAGE);
+		}
 	};
 
 	var bindWorldMapRotation = function(){
@@ -142,6 +165,7 @@ var gamell = (function($, window){
 			initTooltip();
 			initImages();
 			bindWorldMapRotation();
+			initDropboxSaver();
 		});
 	};
 
@@ -149,21 +173,19 @@ var gamell = (function($, window){
 
 		impress().init();
 
+		displayFallbackMessage();
+
 		$(document).ready(function(){
 
 			setupAnimate();
-			refreshBrowserSizes(); // bind on window resize handler
-			$(window).resize(refreshBrowserSizes);	
 			$(window).load(function(){
 				initDeferredScripts();
 			});
+
 		});
 
 	};
 
 	init();
-
-	module.refreshBrowserSizes = refreshBrowserSizes;
-	return module;
 
 })(jQuery, window);

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="scripts/tipsy/src/stylesheets/tipsy.css">
     <!-- endbuild -->
+
     <!-- build:css styles/print.css -->
     <link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
     <!-- endbuild -->
@@ -39,9 +40,10 @@
     
   </head>
 
-  <body>   
+  <body>  
+    <!-- Fallback message populated through JavaScript --> 
     <div class="fallback-message">
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <p></p>
     </div>  
     <div id="wrap">  
       <div id="impress" data-transition-duration="1500">  
@@ -60,7 +62,7 @@
                     <h2><a href="#resume-infographic-skills" class="resume">Start Here</a></h2>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <h2><a href="#work" class="work">My Work</a></h2>
+                    <h2><a href="#my-work" class="work">My Work</a></h2>
                   </div>
                   <div class="col-xs-4 text-right">
                     <h2><a href="#contact" class="contact">Contact</a></h2>
@@ -94,7 +96,7 @@
               </div>
             </div>
           </div>
-          <div id="resume-infographic-world-map" class="step auto-height auto-center resume" data-x="-300" data-y="-1400" data-z="-5800" data-rotate-y="89">
+          <div id="resume-infographic-world-map" class="step auto-height auto-center resume" data-x="500" data-y="-1400" data-z="-6000" data-rotate-y="80">
             <div class="custom-header">
               <h3 class="left"><a href="/#resume-infographic-skills">&larr; Skills</a></h3>
               <h2 class="center">World Map</h2>
@@ -108,12 +110,13 @@
             <!-- <div class="timeline">
             </div> -->
           </div>
-          <div id="resume-formal" class="step auto-height resume" data-x="800" data-y="-1400" data-z="-6500">
+          <div id="resume-formal" class="step auto-height resume" data-x="1500" data-y="-1400" data-z="-7000">
               <!-- <div class="viewport"> -->
                 <div class="custom-header">
                   <h3 class="left"><a href="/#resume-infographic-world-map">&larr; World Map</a></h3>
                   <h2 class="center icons">
                     <a title="<span class='skill-tooltip'>Download as PDF</span>" href="/media/resume-joan-gamell.pdf" class="fa fa-download"></a>
+                    <span title="<span class='skill-tooltip dropbox'><span class='fa fa-check'></span>Saved successfully</span>" class="dropbox-success"><a title="<span class='skill-tooltip'>Save in Dropbox</span>" class="fa fa-dropbox dropbox-button"></a></span>
                     <a title="<span class='skill-tooltip'>Print</span>" href="#" onClick="window.print(); return false;" class="fa fa-print"></a>
                   </h2>
                   <h3 class="right"><a href="/#my-work">My Work &rarr;</a></h3>
@@ -244,7 +247,7 @@
                 <!-- TODO! -->
                 <li><a title="<span class='skill-tooltip'>Google+</span>" href="https://plus.google.com/+JoanGamell" class="fa fa-google-plus"></a></li>
                 <li><a title="<span class='skill-tooltip'>Facebook</span>" href="https://www.facebook.com/gamell" class="fa fa-facebook"></a></li>
-                <li><a title="<span class='skill-tooltip'>500px</span>" href="http://500px.com/gamell" class="fa fa-500px"></a></li>
+                <li><a title="<span class='skill-tooltip'>500px</span>" href="http://500px.com/gamell" class="five-hundred"><img src="/images/500px.svg" height=45 /></a></li>
               </ul>
               <div class="section-wrapper email first">
                 <h3><span class="fa fa-envelope"></span>Email</h3>

@@ -46,6 +46,7 @@ Libraries used
 - <a href="http://fontawesome.io/">font-awesome</a>: icons.
 - <a href="https://github.com/jaz303/tipsy">tipsy</a>: tooltips.
 - <a href="http://jquery.com/">jQuery</a>: to glue everything together.
+- iOS colors from: http://ios7colors.com/
 
 Inspiration
 -----------
