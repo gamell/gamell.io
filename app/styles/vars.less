@@ -55,3 +55,14 @@
 // slide size
 
 @slideWidth: 1200px;
+
+// sprite
+
+@spriteUrl: "/images/sprite.png";
+
+.bgFromSprite(@x, @y, @width, @height){
+  display: block;
+  width: @width;
+  height: @height;
+  background: transparent url() no-repeat @x @y;
+}

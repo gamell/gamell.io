@@ -1,0 +1,50 @@
+@import "vars.less";
+
+#my-work{
+
+	ul.my-projects{
+		//width: 80%;
+		margin: 0 auto;
+		list-style: none;
+		margin-top: 100px;
+		overflow: auto;
+
+		li{
+			float: left;
+			width: 310px;
+			margin-right: 95px;
+
+			&.last{
+				margin-right: 0;
+			}
+
+			a.project-logo{
+				display: block;
+				margin-bottom: 30px;
+				font-family: @header-font;
+				font-size: 65px;
+				letter-spacing: 7px;
+				font-weight: bold;
+				line-height: 72px;
+
+				&.airasiago{
+					.bgFromSprite(0px,-61px,300px,72px);
+				}
+
+				&.wtfoto{
+					.bgFromSprite(0px,0px,300px,60px);
+					margin-top: 12px;
+				}
+
+			}
+
+			p{
+				font-size: 16px;
+				line-height: 30px;
+				text-align: justify;
+			}
+
+		}
+
+	}
+}

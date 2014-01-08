@@ -7,6 +7,8 @@ var gamell = (function($, window){
 
 	var RESUME_URL = "http://gamell.io/media/resume-joan-gamell.pdf"; 
 
+	var SPRITE_URL = "/images/sprite.png";
+
 	var DEFERRED_SCRIPTS = "/scripts/deferred/deferred.js";
 
 	// devcode: !production
@@ -87,7 +89,7 @@ var gamell = (function($, window){
 
 	};
 
-	var initImages = function(){ // function to load the images with the "rel" attribute
+	var initQR = function(){ // function to load the images with the "rel" attribute
 		//debugger;
 		$("img.needs-init").each(function(i, elem){
 			$(elem).attr("src", $(elem).attr("rel"));	
@@ -152,6 +154,20 @@ var gamell = (function($, window){
 		}
 	};
 
+	var bindInitQr = function(){
+		// setup the listener to init the world rotation
+		if(window.location.hash === "#/resume-formal" || $("body.impress-not-supported").length > 0 ){
+			initQR();
+		} else {
+			$(window).on('hashchange',function(){ 
+			    if(window.location.hash === "#/resume-formal"){
+			    	initQR();
+			    	$(window).off('hashchange');	
+			    }
+			});
+		}
+	};
+
 	var initWorldMapRotation = function(){
 		if(!!worldMap && !worldMapRotating){
 			worldMap.initRotation();
@@ -163,10 +179,14 @@ var gamell = (function($, window){
 		initGithubButton();
 		loadDeferredScripts().done(function(){
 			initTooltip();
-			initImages();
 			bindWorldMapRotation();
+			bindInitQr();
 			initDropboxSaver();
 		});
+	};
+
+	var initSprite = function(){
+		$(".sprite").css("backgroundImage", "url("+SPRITE_URL+")");
 	};
 
 	var init = function(){
@@ -180,6 +200,7 @@ var gamell = (function($, window){
 			setupAnimate();
 			$(window).load(function(){
 				initDeferredScripts();
+				initSprite();
 			});
 
 		});
