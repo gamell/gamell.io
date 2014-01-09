@@ -1,5 +1,5 @@
 Initially I was using the fonts directly from Google Fonts (.woff) but it turns out their own browser - Chrome - cannot render
-their own fonts propperly in Windows (  ) so I had to host and convert the fonts myself following this guides: 
+their own fonts propperly in Windows ( https://code.google.com/p/chromium/issues/detail?id=137692 ) so I had to host and convert the fonts myself following this guides: 
 http://www.dev-metal.com/fix-ugly-font-rendering-google-chrome/
 http://www.fontspring.com/blog/smoother-web-font-rendering-chrome
 
