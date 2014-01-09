@@ -1,38 +1,78 @@
-// fonts from Google Fonts, original way of importing them was including the following on the HTML head: 
-// <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200|Sanchez' rel='stylesheet' type='text/css'>
-// removed to avoid downloading an extra CSS form Google's CDN
+// Initially I was using the fonts directly from Google Fonts (.woff) but it turns out their own browser - Chrome - cannot render
+// their own fonts propperly in Windows (  ) so I had to host and convert the fonts myself following this guides: 
+// http://www.dev-metal.com/fix-ugly-font-rendering-google-chrome/
+// http://www.fontspring.com/blog/smoother-web-font-rendering-chrome
 
-// @font-face {
-//   font-family: 'Sanchez';
-//   font-style: normal;
-//   font-weight: 400;
-//   src: local('Sanchez'), local('Sanchez-Regular'), url(http://themes.googleusercontent.com/static/fonts/sanchez/v1/9T6om-IyqE2CuKLLQr0lcgLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
-// }
+// Web-font converter: http://www.fontsquirrel.com/tools/webfont-generator
 
+// Notice the hack to make Google Chrome use .svg !
+
+// Downside: If you print to a PDF when rendering with SVG you wont be able to select or search the PDF text.
+
+//
+// Source Sans Pro light
+//
+
+/* this is how a font-face rule usually looks like */
 @font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 200;
-  src: local('Source Sans Pro ExtraLight'), local('SourceSansPro-ExtraLight'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v6/toadOcfmlt9b38dHJxOBGC-IiwWNzQT_LXAtr-Ee9Pw.woff) format('woff');
+    font-family: 'Source Sans Pro';
+            src: url('/fonts/source-sans-pro/sourcesanspro-light-webfont.eot'); /* IE9 Compat Modes */
+            src: url('/fonts/source-sans-pro/sourcesanspro-light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                 url('/fonts/fonts.svg#source_sans_prolight') format('svg'), /* Legacy iOS and Chrome */
+                 url('/fonts/source-sans-pro/sourcesanspro-light-webfont.woff') format('woff'), /* Modern Browsers */
+                 url('/fonts/source-sans-pro/sourcesanspro-light-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+                 
+    font-style: normal;
+    font-weight: 400;
 }
+
+//
+// Source Sans Pro regular - used for bold texts
+//
+
+/* this is how a font-face rule usually looks like */
 @font-face {
-  font-family: 'Droid Serif';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Droid Serif'), local('DroidSerif'), url(http://themes.googleusercontent.com/static/fonts/droidserif/v3/0AKsP294HTD-nvJgucYTaLrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+    font-family: 'Source Sans Pro';
+            src: url('/fonts/source-sans-pro/sourcesanspro-regular-webfont.eot'); /* IE9 Compat Modes */
+            src: url('/fonts/source-sans-pro/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                 url('/fonts/fonts.svg#source_sans_proregular') format('svg'), /* Legacy iOS and Chrome */
+                 url('/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff') format('woff'), /* Modern Browsers */
+                 url('/fonts/source-sans-pro/sourcesanspro-regular-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: 700;
 }
+
+//
+// Droid Serif regular
+//
+
+/* this is how a font-face rule usually looks like */
 @font-face {
-  font-family: 'Droid Serif';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(http://themes.googleusercontent.com/static/fonts/droidserif/v3/QQt14e8dY39u-eYBZmppwRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
+    font-family: 'Droid Serif';
+            src: url('/fonts/droid-serif/droidserif-webfont.eot'); /* IE9 Compat Modes */
+            src: url('/fonts/droid-serif/droidserif-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                 url('/fonts/fonts.svg#droid_serifregular') format('svg'), /* Legacy iOS and Chrome */
+                 url('/fonts/droid-serif/droidserif-webfont.woff') format('woff'), /* Modern Browsers */
+                 url('/fonts/droid-serif/droidserif-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: 400;
 }
-// @font-face {
-//   font-family: 'Droid Serif';
-//   font-style: italic;
-//   font-weight: 400;
-//   src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(http://themes.googleusercontent.com/static/fonts/droidserif/v3/cj2hUnSRBhwmSPr9kS5894o3ZslTYfJv0R05CazkwN8.woff) format('woff');
-// }
+
+//
+// Droid Serif bold
+//
+
+/* this is how a font-face rule usually looks like */
+@font-face {
+    font-family: 'Droid Serif';
+            src: url('/fonts/droid-serif/droidserif-bold-webfont.eot'); /* IE9 Compat Modes */
+            src: url('/fonts/droid-serif/droidserif-bold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                 url('/fonts/fonts.svg#droid_serifbold') format('svg'), /* Legacy iOS and Chrome */
+                 url('/fonts/droid-serif/droidserif-bold-webfont.woff') format('woff'), /* Modern Browsers */
+                 url('/fonts/droid-serif/droidserif-bold-webfont.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: 700;
+}
 
 @header-font:   'Source Sans Pro', sans-serif;
 @body-font:     'Droid Serif', serif;

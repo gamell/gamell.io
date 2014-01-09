@@ -18,6 +18,8 @@ body.impress-not-supported{
 		top: 95px;
 		height: 100px;
 		width: 1200px;
+		left: 50%;
+		margin-left: -600px;
 		font-family: @header-font;
 		background-color: @iosDarkBlue;
 		color: white;
@@ -25,7 +27,7 @@ body.impress-not-supported{
 		p{
 			width: @slideWidth;
 			margin: 0 auto;
-			font-size: 30px;
+			font-size: 22px;
 			line-height: 100px;
 			text-align:center;
 		}
@@ -39,6 +41,16 @@ body.impress-not-supported{
 
 	#wrap{
 		margin-top: 300px;
+	}
+
+	&.mobile{
+		.fallback-message{
+			left:0;
+			margin-left:0;
+			p{
+				font-size: 27px;
+			}
+		}	
 	}
 
 } 

@@ -16,6 +16,10 @@
 @import "my-work.less";
 
 body{
+	//-webkit-text-stroke: 1px rgba(0, 0, 0, 0.0);
+	// fix for stupid Chrome Mac not rendering the fonts in a crisp way
+	// http://tanookilabs.com/your-fonts-look-bad-in-chrome-heres-the-fix/
+	-webkit-font-smoothing:antialiased;
 	background-color: @white;
 	opacity: 0;
 
@@ -27,6 +31,10 @@ body{
 		}
 	}
 
+}
+
+h1, h2, h3, h4{
+	font-weight: 300;
 }
 
 .animate{ // 0 opacity so it doesn't show the text before the animation

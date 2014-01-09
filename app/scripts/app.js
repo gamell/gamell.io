@@ -82,15 +82,14 @@ var gamell = (function($, window){
 		$('#contact ul a').tipsy($.extend({},tipsyCommonConfig));
 
 		$('.skills span.web').tipsy($.extend({},tipsyCommonConfig,{gravity:"s"}));
-		$('.skills span.javascript').tipsy($.extend({},tipsyCommonConfig,{gravity:"e"}));
-		$('.skills span.qc').tipsy($.extend({},tipsyCommonConfig,{gravity:"s"}));
-		$('.skills span.other').tipsy($.extend({},tipsyCommonConfig,{gravity:"e"}));
-		$('.skills span.project').tipsy($.extend({},tipsyCommonConfig,{gravity:"e"}));
+		$('.skills span.javascript').tipsy($.extend({},tipsyCommonConfig,{gravity:"s"}));
+		$('.skills span.qc').tipsy($.extend({},tipsyCommonConfig,{gravity:"e"}));
+		$('.skills span.other').tipsy($.extend({},tipsyCommonConfig,{gravity:"s"}));
+		$('.skills span.project').tipsy($.extend({},tipsyCommonConfig,{gravity:"n"}));
 
 	};
 
 	var initQR = function(){ // function to load the images with the "rel" attribute
-		//debugger;
 		$("img.needs-init").each(function(i, elem){
 			$(elem).attr("src", $(elem).attr("rel"));	
 		});
