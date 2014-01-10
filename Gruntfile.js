@@ -308,6 +308,7 @@ module.exports = function (grunt) {
             'scripts/*.json',
             'fonts/{,*/}*.*',
             'media/*.*',
+            'ie8-warning/*.*',
             '.htaccess',
             'images/{,*/}*.{webp,gif}'
           ]

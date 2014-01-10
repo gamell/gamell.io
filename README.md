@@ -51,6 +51,7 @@ Libraries used
 - <a href="https://github.com/jaz303/tipsy">tipsy</a>: tooltips.
 - <a href="http://jquery.com/">jQuery</a>: to glue everything together.
 - iOS colors from: http://ios7colors.com/
+- Modified ie6 warning to warn for browsers lower than ie9: https://code.google.com/p/ie6-upgrade-warning/
 
 Inspiration
 -----------
