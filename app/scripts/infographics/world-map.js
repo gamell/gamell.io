@@ -36,7 +36,12 @@ var worldMap = (function(window, d3, queue, topojson){
               .attr("height", height)
               .on("mousedown", mousedown);
 
-  var places = {"type": "FeatureCollection","features": [{ "type": "Feature", "properties": { "name": "Barcelona", "nameascii": "Barcelona", "adm0name": "Spain", "adm0_a3": "Spain", "adm1name": "Catalunya", "iso_a2": "ES", "note": null, "latitude": 40.4165000, "longitude": 2.1589900}, "geometry": { "type": "Point", "coordinates": [ 2.1589900, 41.3887900 ] } },{ "type": "Feature", "properties": { "name": "Madrid", "nameascii": "Madrid", "adm0name": "Spain", "adm0_a3": "Spain", "adm1name": "Madrid", "iso_a2": "ES", "note": null, "latitude": 41.3887900, "longitude": -3.7025600}, "geometry": { "type": "Point", "coordinates": [ -3.7025600, 40.4165000 ] } },{ "type": "Feature", "properties": { "name": "Singapore", "nameascii": "Singapore", "adm0name": "Singapore", "adm0_a3": "Singapore", "adm1name": "Singapore", "iso_a2": "SG", "note": null, "latitude": 1.2896700, "longitude": 103.8500700}, "geometry": { "type": "Point", "coordinates": [ 103.8500700, 1.2896700 ] } }]};
+  var places = {"type": "FeatureCollection","features": [
+    { "type": "Feature", "properties": { "name": "Barcelona", "nameascii": "Barcelona", "adm0name": "Spain", "adm0_a3": "Spain", "adm1name": "Catalunya", "iso_a2": "ES", "note": null, "latitude": 40.4165000, "longitude": 2.1589900}, "geometry": { "type": "Point", "coordinates": [ 2.1589900, 41.3887900 ] } },
+    { "type": "Feature", "properties": { "name": "Madrid", "nameascii": "Madrid", "adm0name": "Spain", "adm0_a3": "Spain", "adm1name": "Madrid", "iso_a2": "ES", "note": null, "latitude": 41.3887900, "longitude": -3.7025600}, "geometry": { "type": "Point", "coordinates": [ -3.7025600, 40.4165000 ] } },
+    { "type": "Feature", "properties": { "name": "Singapore", "nameascii": "Singapore", "adm0name": "Singapore", "adm0_a3": "Singapore", "adm1name": "Singapore", "iso_a2": "SG", "note": null, "latitude": 1.2896700, "longitude": 103.8500700}, "geometry": { "type": "Point", "coordinates": [ 103.8500700, 1.2896700 ] } },
+    { "type": "Feature", "properties": { "name": "San Francisco", "nameascii": "San Francisco", "adm0name": "San Francisco", "adm0_a3": "United States", "adm1name": "California", "iso_a2": "US", "note": null, "latitude": 37.7749300, "longitude": -122.4194200}, "geometry": { "type": "Point", "coordinates": [ -122.4194200, 37.7749300 ] } }
+  ]};
 
   queue().defer(d3.json, "/scripts/world-110m.json").await(ready);
 
@@ -99,6 +104,9 @@ var worldMap = (function(window, d3, queue, topojson){
     },{
       source: places.features[1].geometry.coordinates,
       target: places.features[2].geometry.coordinates 
+    },{
+      source: places.features[2].geometry.coordinates,
+      target: places.features[3].geometry.coordinates 
     }];
 
     // build geoJSON features from links array
